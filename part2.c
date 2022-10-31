@@ -106,7 +106,7 @@ void execache(int NumOfBlocks, int nway, int blockSize)
             if (d_cache.valid_field[loopIndex] && d_cache.tag_field[loopIndex] == tag)
             { /* Cache hit */
                 d_cache.hits += 1;
-                hitMade = 1;
+                hit = 1;
                 break;
             }
             if (d_cache.valid_field[loopIndex] == 0)
