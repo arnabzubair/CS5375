@@ -126,7 +126,7 @@ void get_rates(int num_blocks, int n_way, int block_size)
             else
             {
                 /*Replace at a random index*/
-                nt random_ind = (rand() % (end_ind - start_ind + 1)) + start_ind;
+                int random_ind = (rand() % (end_ind - start_ind + 1)) + start_ind;
                 d_cache.valid_field[random_ind] = 1;
                 d_cache.tag_field[random_ind] = tag;
             }
@@ -144,7 +144,7 @@ printf("==================================\n");
 
 void get_hits(int cache_size, int num_blocks, int n_way, int block_size)
 {
-    get_rates(num_blocks, n_way, block_size)
+    get_rates(num_blocks, n_way, block_size);
 }
 
 /*Given a fixed cache size of 32KB, test the fully-associative, 8-way set associative, 4-way set 
@@ -152,7 +152,6 @@ associative, and 2-way set associative cache with cache line size of 16 bytes, 3
 128 bytes, respectively*/
 void n_way_p1()
 {
-    int continue = 0;
     do
     {
     long cache_size = 32 * 1024;
@@ -180,11 +179,11 @@ void n_way_p1()
             break;
         case 3:
             printf("4-way Execution");
-            get_hits(32, num_blocks 4, 16);
+            get_hits(32, num_blocks, 4, 16);
             break;
         case 4:
             printf("8-way Execution");
-            get_hits(32, num_blocks 8, 16);
+            get_hits(32, num_blocks, 8, 16);
             break;
         default:
             break;
@@ -205,11 +204,11 @@ void n_way_p1()
             break;
         case 3:
             printf("4-way Execution");
-            get_hits(32, num_blocks 4, 32);
+            get_hits(32, num_blocks, 4, 32);
             break;
         case 4:
             printf("8-way Execution");
-            get_hits(32, num_blocks 8, 32);
+            get_hits(32, num_blocks, 8, 32);
             break;
         default:
             break;
@@ -230,11 +229,11 @@ void n_way_p1()
             break;
         case 3:
             printf("4-way Execution");
-            get_hits(32, num_blocks 4, 128);
+            get_hits(32, num_blocks, 4, 128);
             break;
         case 4:
             printf("8-way Execution");
-            get_hits(32, num_blocks 8, 128);
+            get_hits(32, num_blocks, 8, 128);
             break;
         default:
             break;
@@ -253,7 +252,6 @@ way set associative, and 2-way set associative cache with the cache size of 16KB
 64KB, respectively*/
 void n_way_p2()
 {
-    int to_continue = -1;
     do
     {
     long cache_size = 16 * 1024;
@@ -320,7 +318,7 @@ void n_way_p2()
         case 3:
             printf("\n\n64KB cache size and 64 bytes Block Size=======\n");
             cache_size = 64 * 1024;
-            num_blocks = (int)cache_wize / 64;
+            num_blocks = (int)cache_size / 64;
             switch (n_way_select)
             {
             case 1:
@@ -329,7 +327,7 @@ void n_way_p2()
                 break;
             case 2:
                 printf("2-way Execution\n");
-                get_hit(64, total_blocks, 2, 64);
+                get_hit(64, num_blocks, 2, 64);
                 break;
             case 3:
                 printf("4-way Execution\n");
@@ -346,9 +344,7 @@ void n_way_p2()
         default:
             break;
         }
-        printf("Select 1 to continue, any other key to exit:\n ");
-        scanf("%d",&continue);
-    } while (continue==1);
+    }
 }
 
 int main(int argc, char *argv[])
