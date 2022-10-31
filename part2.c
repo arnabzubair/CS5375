@@ -242,9 +242,7 @@ void n_way_p1()
     default:
         break;
     }
-    printf("Select 1 to continue, any other key to exit: \n ");
-    scanf("%d", &continue);
-    } while (continue==1);
+    }
 }
 
 /*Given a fixed cache line size of 64 bytes, test the fully-associative, 8-way set associative, 4-
@@ -323,19 +321,19 @@ void n_way_p2()
             {
             case 1:
                 printf("Fully Associatve Execution\n");
-                get_hit(64, num_blocks, num_blocks, 64);
+                get_hits(64, num_blocks, num_blocks, 64);
                 break;
             case 2:
                 printf("2-way Execution\n");
-                get_hit(64, num_blocks, 2, 64);
+                get_hits(64, num_blocks, 2, 64);
                 break;
             case 3:
                 printf("4-way Execution\n");
-                get_hit(64, num_blocks, 4, 64);
+                get_hits(64, num_blocks, 4, 64);
                 break;
             case 4:
                 printf("8-way Execution\n");
-                get_hit(64, num_blocks, 8, 64);
+                get_hits(64, num_blocks, 8, 64);
                 break;
             default:
                 break;
