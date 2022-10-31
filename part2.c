@@ -118,7 +118,7 @@ void execache(int NumOfBlocks, int nway, int blockSize)
             nwayTemp--;
         }
 
-        if (hitMade == 0)
+        if (hit == 0)
         {
             d_cache.misses += 1;
             if (empty_space > 0)
