@@ -54,12 +54,20 @@ int main(int argc, char *argv[])
             address = convert_address(mem_request);
             direct_mapped_cache_access(&d_cache, address);
         }
+
+        /* Initializing new variables to calculate hit and miss rate*/
+        double total_accesses = d_cache.hits + d_cache.misses;
+        double miss_rate = d_cache.misses / total_accesses;
+        double hit_rate = 1 - miss_rate;
+
         /*Print out the results*/
         printf("\n==================================\n");
         printf("Cache type:    Direct-Mapped Cache\n");
         printf("==================================\n");
         printf("Cache Hits:    %d\n", d_cache.hits);
         printf("Cache Misses:  %d\n", d_cache.misses);
+        printf("Cache Hit Rate: %d\n", hit_rate);
+        printf("Cache Miss Rate: %d\n", miss_rate);
         printf("\n");
     }
 
