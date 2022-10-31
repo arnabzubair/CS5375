@@ -95,7 +95,7 @@ void execache(int NumOfBlocks, int nway, int blockSize)
         int endIndex = startIndex + nway - 1;
 
         int hit = 0;
-        int Empty_size = 0;
+        int empty_space = 0;
         int nwayTemp = nway;
         int loopIndex = startIndex;
         int i = 0;
@@ -111,7 +111,7 @@ void execache(int NumOfBlocks, int nway, int blockSize)
             }
             if (d_cache.valid_field[loopIndex] == 0)
             {
-                Empty_space = 1;
+                empty_space = 1;
             }
 
             loopIndex += 1;
@@ -121,7 +121,7 @@ void execache(int NumOfBlocks, int nway, int blockSize)
         if (hitMade == 0)
         {
             d_cache.misses += 1;
-            if (Empty_Size > 0)
+            if (empty_space > 0)
             {
                 nwayTemp = nway;
                 loopIndex = startIndex;
@@ -265,7 +265,7 @@ void execute_Part2()
     int NumOfBlocks = 0;
     int a = 0;
     printf("For execution over 64Bytes Cache line size ,Click 1 for 16KB Cachesize, 2 for 32KB Cachesize, 3 for 64KB Cachesize \n  \n");
-    scanf("%d", &ca);
+    scanf("%d", &a);
     int selection;
     printf("Select 1 for fully associative execution, 2 for 2 way execution, 4 for 4 way execution, 8 for 8 way execution: ");
     scanf("%d", &selection);
@@ -274,7 +274,7 @@ void execute_Part2()
         switch (a)
         {
         case 1:
-            totalNumOfBlocks = (int)cacheSize / 64;
+            NumOfBlocks = (int)cacheSize / 64;
             printf("\n\n######### STARTING EXECUTION OF  16kb cache size and 64 bytes cache line size/block size=======\n");
             switch (selection)
             {
