@@ -243,7 +243,7 @@ void n_way_p1()
     default:
         break;
     }
-        printf("Select 1 to continue test cases, select any other key to exit: ")
+        printf("Select 1 to continue test cases, select any other key to exit: ");
         scanf("%d", &continue);
     } while (continue==1);
 }
@@ -346,7 +346,7 @@ void n_way_p2()
         default:
             break;
         }
-        printf("Select 1 to continue test cases, select any other key to exit: ")
+        printf("Select 1 to continue test cases, select any other key to exit: ");
         scanf("%d", &continue);
     } while (continue==1);
 }
