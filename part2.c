@@ -152,6 +152,7 @@ associative, and 2-way set associative cache with cache line size of 16 bytes, 3
 128 bytes, respectively*/
 void n_way_p1()
 {
+    int continue = 0;
     do
     {
     long cache_size = 32 * 1024;
@@ -242,7 +243,9 @@ void n_way_p1()
     default:
         break;
     }
-    }
+        printf("Select 1 to continue test cases, select any other key to exit: ")
+        scanf("%d", &continue);
+    } while (continue==1);
 }
 
 /*Given a fixed cache line size of 64 bytes, test the fully-associative, 8-way set associative, 4-
@@ -250,6 +253,7 @@ way set associative, and 2-way set associative cache with the cache size of 16KB
 64KB, respectively*/
 void n_way_p2()
 {
+    int continue = 0;
     do
     {
     long cache_size = 16 * 1024;
@@ -342,7 +346,9 @@ void n_way_p2()
         default:
             break;
         }
-    }
+        printf("Select 1 to continue test cases, select any other key to exit: ")
+        scanf("%d", &continue);
+    } while (continue==1);
 }
 
 int main(int argc, char *argv[])
