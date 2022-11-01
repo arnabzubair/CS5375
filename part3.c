@@ -1,3 +1,4 @@
+/*Copied includes and convert address function from cachesim.c source code file*/
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
@@ -6,6 +7,7 @@
 
 char *trace_file_name;
 
+/*Initialize L1 and L2 Caches*/
 struct L1_cache
 {
     unsigned valid_field[1024];
@@ -265,21 +267,15 @@ int main(int argc, char *argv[])
                 insert_L1(address, L1_n_way, &l1);
             }
         }
-        printf("\n==================================\n");
-        printf("L1 Cache\n");
-        printf("==================================\n");
-        printf("Cache Hits:    %d\n", l1.hits);
-        printf("Cache Misses:  %d\n", l1.misses);
-        printf("Cache Hit Rate: %0.1f%%\n", ((float)l1.hits / (float)(l1.hits + l1.misses)) * 100);
-        printf("Cache Miss Rate: %0.1f%%\n", ((float)l1.misses / (float)(l1.hits + l1.misses)) * 100);
+        printf("L1 Cache Hits:    %d\n", l1.hits);
+        printf("L1 Cache Misses:  %d\n", l1.misses);
+        printf("L1 Cache Hit Rate: %0.1f%%\n", ((float)l1.hits / (float)(l1.hits + l1.misses)) * 100);
+        printf("L1 Cache Miss Rate: %0.1f%%\n", ((float)l1.misses / (float)(l1.hits + l1.misses)) * 100);
         printf("\n");
-        printf("\n==================================\n");
-        printf("L2 Cache\n");
-        printf("==================================\n");
-        printf("Cache Hits:    %d\n", l2.hits);
-        printf("Cache Misses:  %d\n", l2.misses);
-        printf("Cache Hit Rate: %0.9f%%\n", ((float)l2.hits / (float)(l2.hits + l2.misses)) * 100);
-        printf("Cache Miss Rate: %0.9f%%\n", ((float)l2.misses / (float)(l2.hits + l2.misses)) * 100);
+        printf("L2 Cache Hits:    %d\n", l2.hits);
+        printf("L2 Cache Misses:  %d\n", l2.misses);
+        printf("L2 Cache Hit Rate: %0.9f%%\n", ((float)l2.hits / (float)(l2.hits + l2.misses)) * 100);
+        printf("L2 Cache Miss Rate: %0.9f%%\n", ((float)l2.misses / (float)(l2.hits + l2.misses)) * 100);
         printf("\n");
     }
     fclose(fp);
