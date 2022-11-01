@@ -206,6 +206,7 @@ void insert_L2(uint64_t address, int n_way, struct L2_cache *l2)
     }
 }
 
+/*Main function to load in trace file and call previous functions*/
 int main(int argc, char *argv[])
 {
     FILE *fp;

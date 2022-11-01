@@ -88,6 +88,7 @@ void execute_cache(int num_blocks, int n_way, int block_size)
 
     while (fgets(memory_request, 20, fp) != NULL)
     {
+        /* Initialize variables for cache hits/misses*/
         address = convert_address(memory_request);
         uint64_t block_address = address >> (unsigned)log2(block_size);
         int set_num = block_address % num_sets;
@@ -147,6 +148,7 @@ void execute_cache(int num_blocks, int n_way, int block_size)
             }
         }
     }
+    /*Print results*/
     printf("==================================\n");
     printf("Cache Hits:    %d\n", d_cache.hits);
     printf("Cache Misses:  %d\n", d_cache.misses);
@@ -161,6 +163,7 @@ void execute_cache_helper(int cache_size, int num_blocks, int n_way, int block_s
     execute_cache(num_blocks, n_way, block_size);
 }
 
+/*First question of part 2, a given fixed cache size of 32KB*/
 void p1()
 {
     int continue_choice = 0;
@@ -176,6 +179,7 @@ void p1()
     scanf("%d", &selection);
     switch (ca)
     {
+    /*32KB cache size with 16 byte cache line size*/
     case 1:
         printf("\n\n 16-byte cache line size:\n");
         num_blocks = (int)cache_size / 16;
@@ -197,6 +201,7 @@ void p1()
             break;
         }
         break;
+    /*32KB cache size with 32 byte cache line size*/
     case 2:
         printf("\n\n 32-byte cache line size:\n");
         num_blocks = (int)cache_size / 32;
@@ -219,6 +224,7 @@ void p1()
         }
 
         break;
+    /*32KB cache size with 128 byte cache line size*/
     case 3:
         printf("\n\n 128-byte cache line size:\n");
         num_blocks = (int)cache_size / 128;
@@ -248,6 +254,7 @@ void p1()
     } while (continue_choice==1);
    
 }
+/*Second question of part 2, a given fixed cache line size of 64 bytes*/
 void p2()
 {
 
@@ -257,13 +264,14 @@ void p2()
  long cache_size = 16 * 1024;
     int num_blocks = 0;
     int ca = 0;
-    printf("64KB cache line size: Select 1 for 16KB cache, 2 for 32KB cache, or 3 for 64KB cache\n");
+    printf("64 byte cache line size: Select 1 for 16KB cache, 2 for 32KB cache, or 3 for 64KB cache\n");
     scanf("%d", &ca);
     int selection;
     printf("Select 1 for fully associative execution, 2 for 2-way, 4 for 4-way, 8 for 8-way: ");
     scanf("%d", &selection);
         switch (ca)
         {
+        /*16KB cache size and 64 byte cache line size*/
         case 1:
             num_blocks = (int)cache_size / 64;
             printf("\n 16KB cache size: \n");
@@ -287,10 +295,11 @@ void p2()
             }
 
             break;
+        /*32KB cache size and 64 byte cache line size*/
         case 2:
             printf("\n 32KB cache size: \n");
             cache_size = 32 * 1024;
-            num_blocks = (int)cache_size / 64;  /*calculation for number of blocks*/
+            num_blocks = (int)cache_size / 64;
             switch (selection)
             {
             case 8:
@@ -310,6 +319,7 @@ void p2()
                 break;
             }
             break;
+        /*64KB cache size and 64 byte cache line size*/
         case 3:
             printf("\n 64KB cache size: \n");
             cache_size = 64 * 1024;
@@ -344,6 +354,7 @@ void p2()
 
 }
 
+/*Main function to load in trace file and call previous functions*/
 int main(int argc, char *argv[])
 {
     trace_file_name = argv[2];
